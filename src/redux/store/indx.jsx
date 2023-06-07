@@ -1,8 +1,9 @@
-import { legacy_createStore as createStore } from 'redux'
-import { rootReducer } from '../reducer';
+import { legacy_createStore as createStore } from "@reduxjs/toolkit";
+import { rootReducer } from "../reducer";
+import persistStore from "redux-persist/es/persistStore";
 
-const store = createStore(rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default store;
+export const store = createStore(rootReducer, composeEnhancers());
+
+export const persistor = persistStore(store);

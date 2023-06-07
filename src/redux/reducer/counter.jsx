@@ -16,6 +16,7 @@ const counterSlice = createSlice({
         clearCount: (state) => {
             state.value = 0;
         },
+        
     }
 });
 

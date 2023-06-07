@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 import { counterSliceReducer } from "./counter";
-import { userReucer } from "./users";
+import { counterPersistConfig, userPersistConfig, userReucer } from "./users";
+import { persistReducer } from "redux-persist";
 
 export const rootReducer = combineReducers({
-    counter: counterSliceReducer,
-    user: userReucer
+    counter: persistReducer(counterPersistConfig,counterSliceReducer),
+    user: persistReducer(userPersistConfig,userReucer)
 })
